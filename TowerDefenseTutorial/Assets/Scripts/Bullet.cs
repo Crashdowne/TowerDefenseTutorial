@@ -9,17 +9,12 @@ public class Bullet : MonoBehaviour {
     public GameObject impactEffect;
     public float speed = 70f;
     public float explosionRadius = 0f;
+    public int damage = 50;
 
     public void Seek (Transform _target)
     {
         target = _target;
     }
-
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -74,7 +69,12 @@ public class Bullet : MonoBehaviour {
 
     void Damage (Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        Enemy e = enemy.GetComponent<Enemy>();
+
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
     }
 
     private void OnDrawGizmosSelected()

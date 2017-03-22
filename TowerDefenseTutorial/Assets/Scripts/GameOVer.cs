@@ -1,26 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOVer : MonoBehaviour
 {
-
-    public Text roundsText;
-
-    void OnEnable ()
-    {
-        roundsText.text = PlayerStats.rounds.ToString();
-    }
+    public Fade sceneFader;
+    public string menuSceneName = "MainMenu";
 
     public void Retry ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Menu ()
     {
-        Debug.Log("Menu");
+        sceneFader.FadeTo(menuSceneName);
     }
 }
